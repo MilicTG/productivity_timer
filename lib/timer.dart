@@ -42,4 +42,20 @@ class CountDownTimer {
     _time = Duration(minutes: this.work, seconds: 0);
     _fullTime = _time;
   }
+
+  void startTimer() {
+    if (_time.inSeconds > 0) {
+      this._isActive = true;
+    }
+  }
+
+  void stopTimer() {
+    this._isActive = false;
+  }
+
+  void startBreak(bool isShort) {
+    _radius = 1;
+    _time = Duration(minutes: (isShort) ? shortBreak : longBreak, seconds: 0);
+    _fullTime = _time;
+  }
 }

@@ -22,6 +22,8 @@ class TimerHomePage extends StatelessWidget {
   final double defaultPadding = 5.0;
   final CountDownTimer timer = CountDownTimer();
 
+  final List<PopupMenuItem<String>> menuItems = List<PopupMenuItem<String>>();
+
   @override
   Widget build(BuildContext context) {
     timer.startWork();
@@ -42,21 +44,21 @@ class TimerHomePage extends StatelessWidget {
                         child: ProductivityButton(
                       color: Color(0xff009688),
                       text: 'Work',
-                      onPressed: () => emptyMethod(),
+                      onPressed: () => timer.startWork(),
                     )),
                     Padding(padding: EdgeInsets.all(defaultPadding)),
                     Expanded(
                         child: ProductivityButton(
                       color: Color(0xFF607D8B),
                       text: 'Short Break',
-                      onPressed: () => emptyMethod(),
+                      onPressed: () => timer.startBreak(true),
                     )),
                     Padding(padding: EdgeInsets.all(defaultPadding)),
                     Expanded(
                         child: ProductivityButton(
                       color: Color(0xff455A64),
                       text: 'Long Break',
-                      onPressed: () => emptyMethod(),
+                      onPressed: () => timer.startBreak(false),
                     )),
                     Padding(padding: EdgeInsets.all(defaultPadding)),
                   ],
@@ -87,14 +89,14 @@ class TimerHomePage extends StatelessWidget {
                         child: ProductivityButton(
                       color: Color(0xff212121),
                       text: 'Stop',
-                      onPressed: () => emptyMethod(),
+                      onPressed: () => timer.stopTimer(),
                     )),
                     Padding(padding: EdgeInsets.all(defaultPadding)),
                     Expanded(
                         child: ProductivityButton(
                       color: Color(0xff009688),
-                      text: 'Restart',
-                      onPressed: () => emptyMethod(),
+                      text: 'Resume',
+                      onPressed: () => timer.startTimer(),
                     )),
                     Padding(padding: EdgeInsets.all(defaultPadding)),
                   ],
